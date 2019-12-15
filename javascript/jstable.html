@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS TABLE</title>
+        <style>
+            td,tr{
+                border: 5px solid black;
+                height: 200px;
+                width: 300px;
+                text-align: center;
+            }
+            table{
+                margin-left: auto;
+                margin-top: 30px;
+                margin-right: auto;
+            }
+            #panel{
+                display: none;
+                flex-wrap: wrap;
+            }
+            #border{
+                background-color: red;
+            }
+            #heading{
+                background-color: greenyellow;
+            }
+            #string{
+                background-color: yellow;
+            }
+            #random{
+                background-color: blue;
+            }
+            #delete{
+                background-color: pink;
+            }
+            .fff{
+                border: 2px solid black;
+                margin-left: 40px;
+                height: 200px;
+                width: 250px;
+                padding-top: 50px;
+                text-align: center;
+            }
+            #tableHeading{
+                font-size: 30px;
+            }
+        </style>
+        <script>
+            function createTable(){
+                document.getElementById("form").style.display="none";
+                document.getElementById("panel").style.display="flex";
+                
+                let a = document.getElementById("row").value;
+                let b = document.getElementById("col").value;
+                
+                let table = document.createElement('table');
+                table.id = "tbl";
+                let caption = document.createElement('caption');
+                table.appendChild(caption);
+                caption.id = "tableHeading";
+                for (let i = 0; i < a; i++){
+                    let tr = document.createElement('tr');        
+                    for(let j = 0; j < b; j++){
+                        let td = document.createElement('td');
+                        let textarea = document.createElement('textarea');
+                        let button = document.createElement('input');
+                        button.type = "button";
+                        button.value = "СОХРАНИТЬ";
+                        button.onclick = function(){
+                            //let td = button.parentNode;
+                            let str = td.childNodes[0].value;
+                            td.innerHTML = str;
+                        }
+                        td.appendChild(textarea);
+                        td.appendChild(document.createElement('br'));
+                        td.appendChild(button);
+                        tr.appendChild(td);
+                    }
+                    table.appendChild(tr);
+                }
+                document.getElementById("table").appendChild(table);
+            }
+            function changeBorder(){
+                let pix = document.getElementById("borderWidth").value;
+                let style = document.getElementById("borderStyle").value;
+                let wid = pix + 'px'; 
+                document.getElementById("tbl").style.border = style;
+                document.getElementById("tbl").style.borderWidth = wid;
+            }
+            function changeHead(){
+                let caption = document.getElementById("tableHeading");
+                caption.innerHTML = document.getElementById("head").value;
+            }
+            function deleteString(){
+                let str = document.getElementById("delStr").value;
+                let table = document.getElementById("table").childNodes[0];
+                if(table.childNodes.length - 1 < str || str < 1){
+                    alert('некорректное значение');
+                }
+                else{
+                    table.childNodes[str].remove();
+                    if (table.childNodes.length == 1){
+                    table.childNodes[0].remove();
+                    }
+                }
+            }
+            function delTable(){
+                let table = document.getElementById("table").childNodes[0];
+                table.remove();
+                document.getElementById("panel").style.display="none";
+                document.getElementById("form").style.display="block";
+            }
+            function randInt(min, max){
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function magicPlease(){
+                let table = document.getElementById("table").childNodes[0];
+                let row = table.childNodes[randInt(1, table.childNodes.length - 1)];
+                let td = row.childNodes[randInt(0, row.childNodes.length - 1)];
+                let randNum = randInt(0, 1);
+
+                if (randNum == 0){
+                    let randColor = randInt(0, 0xFFFFFF);
+                    let color = randColor.toString(16);
+                    while (color.length < 6){
+                        color = 'A' + color;
+                    }
+                    td.style.background = '#' + color;
+
+                    randColor = randInt(0, 0xFFFFFF);
+                    color = randColor.toString(16);
+                    while (color.length < 6){
+                        color = 'F' + color;
+                    }
+                    td.style.color = '#' + color;
+
+                    let randSize = randInt(15,25);
+                    td.style.fontSize = randSize+'px';
+                    }
+                    else
+                    {
+                    let textarea = document.createElement('textarea');
+                    let button = document.createElement("input");
+                    button.type = "button";
+                    button.value = "СОХРАНИТЬ";
+                    button.onclick = function(){
+                        let text  = td.childNodes[0].value;    
+                        td.innerHTML = text;                
+                    }
+                    td.innerHTML = "";
+                    td.appendChild(textarea);
+                    td.appendChild(document.createElement('br'));
+                    td.appendChild(button);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form id="panel">
+            <div id="border" class="fff">
+                <p>Изменить границы таблицы</p>
+                <input type="number" id="borderWidth" style="margin-bottom:30px">
+                <br>
+                <select id="borderStyle" style="margin-bottom:30px">
+                    <option value="dotted">dotted</option>
+                    <option value="dashed">dashed</option>
+                    <option value="solid">solid</option>
+                    <option value="double">double</option>
+                    <option value="groove">groove</option>
+                    <option value="ridge">ridge</option>
+                    <option value="inset">inset</option>
+                    <option value="outset">outset</option>
+                </select><br>
+                <button onclick="changeBorder()" type="button">Применить</button>
+            </div>
+            
+            <div id="heading" class="fff">
+                <p>Добавить заголовок</p>
+                <input type="text" id="head" style="margin-bottom:80px"><br>
+                <button onclick="changeHead()" type="button" style="margin-bottom:80px">Добавить</button>
+            </div>
+            
+            <div id="string" class="fff">
+                <p>Удалить строку</p>
+                <input type="number" id="delStr" style="margin-bottom:30px">
+                <br>
+                <button onclick="deleteString()" type="button">Применить</button>
+            </div>
+            
+            <div id="random" class="fff">
+                <p>Случайный выбор</p>
+                <button type="button" id="magic" onclick="magicPlease()">Magic</button>
+            </div>
+            
+            <div id="delete" class="fff">
+                <p>Удалить</p>
+                <button type="button" onclick="delTable()">удалить таблицу</button>
+            </div>
+            
+        </form>
+        <div id="table"></div>
+        <form id="form">
+            <p>Введите количество строк : <input type="number" id="row"></p>
+            <p>Введите количество столбцов : <input type="number" id="col"></p>
+            <button type="button" onclick="createTable()">создать таблицу</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js</title>
+    </head>
+    <body onkeyup="key(event)">
+        <a name="one">one</a>
+        <a name="two">two</a>
+        <form name="first"></form>
+        <form name="second"></form>
+        <form name="third"></form>
+        <img src="https://i.ytimg.com/vi/lp7t30oQ4A4/hqdefault.jpg" width="300" id="gulman">
+        <img src="https://vignette.wikia.nocookie.net/gulman/images/b/be/KQ_5QTPn1c0.jpg/revision/latest?cb=20150107020058&path-prefix=ru" width="300">
+        <img src="https://i.ytimg.com/vi/Kc8PIx5WYdw/hqdefault.jpg" width="300"><br>
+        <a href="http://mega-mult.ru/sbornik/zvezdnye-voiny/502-voiny-klonov.html" id="link1">туда</a>
+        <a href="http://mega-mult.ru/sbornik/zvezdnye-voiny/502-voiny-klonov.html" id="link2">сюда</a><br>
+        <script>
+            document.write("говорю вроде бы банальные вещи");
+            document.write("<h1><i>говорю вроде бы банальные вещи</i></h1>");
+            document.write("<p>Анкоров количество: " + document.anchors.length + "</p>");
+            document.write("<p>Содержимое первого анкора: " + document.anchors[0].innerHTML + "</p>");
+            document.write("<p>Количество форм: " + document.forms.length + "</p>");
+            document.write("<p>Имя первой формы: " + document.forms[0].name + "</p>");
+            document.write("<p>Количество фото: " + document.images.length + "</p>");
+            document.write("<p>Имя первой формы: " + document.images[0].id + "</p>");
+            document.write("<p>Количество ссылок: " + document.links.length + "</p>");
+            document.write("<p>Количество форм: " + document.links[0].id + "</p>");
+            document.write("<p>Домен: " + document.domain + "</p>");
+            document.write("<p>URL: " + document.referrer + "</p>");
+            document.write("<p>Заголовок: " + document.title + "</p>");
+            document.write("<p>URL полный: " + document.URL + "</p>");
+            
+        </script>
+        <h1>КНОПКА</h1>
+        <form id="xxx" name="xxx" action="URL" enctype="text/plain" method="get">
+            <input type="text" id="text" name="text" value="aye">
+            <button id="b1" name="b1" type="button" value="кнопо4ка" onclick="restart()">
+                кнопо4ка cброса
+            </button>
+            <button id="b2" name="b2" type="button" value="manchester" onclick="sms()">
+                кнопо4ка отправки
+            </button>
+        </form>
+        <script>
+            document.write("<p> Имя кнопки: " + document.getElementById("b1").name + "</p>");
+            document.write("<p> Тип: " + document.getElementById("b1").type+ "</p>");
+            document.write("<p> текст: " + document.getElementById("b1").value + "</p>");
+            document.write("<p> ID формы: " + document.getElementById("b1").form.id+ "</p>");
+        </script>
+        <p>Значения элементов</p>
+        <script>
+            var x = document.getElementById("xxx");
+            for (var i = 0;i < x.length;i++)
+                {
+                    document.write(x.elements[i].value);
+                    document.write("<br />");
+                }
+            document.write("<p> action формы: " + document.getElementById("xxx").action+ "</p>");
+            document.write("<p> enctype формы: " + document.getElementById("xxx").enctype+ "</p>");
+            document.write("<p> Количество элементов: " + x.length+ "</p>");
+            document.write("<p> method формы: " + document.getElementById("xxx").method+ "</p>");
+            document.write("<p> name формы: " + document.getElementById("xxx").name+ "</p>");
+            function restart(){
+                document.getElementById("xxx").reset();
+            };
+            function sms(){
+                document.getElementById("xxx").submit();
+            };
+        </script>
+        <h1>ИЗОБРАЖЕНИЯ</h1>
+        
+        <img src="https://sun9-59.userapi.com/c855620/v855620107/174cca/pLyAHFSA9k8.jpg" width="500" id="gul" alt="mashup" name="name">
+        <button onclick="aye()">право</button><br>
+        <button onclick="bord()">границы</button><br>
+        <button onclick="size()">размеры</button><br>
+        <button onclick="src()">открыть дверь</button><br>
+        <button onclick="src1()">закрыть дверь</button><br>
+        <script>
+            function aye(){
+                document.getElementById("gul").align="right"; 
+            };
+            function bord(){
+                document.getElementById("gul").border="10";
+            }
+            function size(){
+                document.getElementById("gul").width="800";
+                document.getElementById("gul").height="800";
+            }
+            function src(){
+                document.getElementById("gul").src="https://sun9-42.userapi.com/c853420/v853420107/178ff9/Klr6tkIMtiQ.jpg";
+            }
+            function src1(){
+                document.getElementById("gul").src="https://sun9-59.userapi.com/c855620/v855620107/174cca/pLyAHFSA9k8.jpg";
+            }
+            document.write("<p>альтернативный текст: " + document.getElementById("gul").alt + "</p>");
+            document.write("<p>имя: " + document.getElementById("gul").name + "</p>");
+        </script>
+        <h1>СОБЫТИЕ</h1>
+        <div onmousedown="show_coords(event)">
+            <p onmousedown="check(event)">проверка джокера(кнопки мыши)</p>
+            <p>Зубенко Михаил Петрович(нажмите на калвишу)</p>
+        </div>
+        <script>
+            function check(event){
+                if(event.button == 2)
+                   alert('правая');
+                else
+                    alert('левая');
+            };
+            function key(event){
+                alert(event.keyCode);
+            };
+            function show_coords(event)
+            {
+                var x = event.clientX;
+                var y = event.clientY;
+                alert("Координата X: " + x + ", Координата Y: " + y);
+            }
+        </script>
+        <h1>ТАБЛИЦЫ</h1>
+        <table id="t1">
+            <tr id="header">
+                <td>111111</td>
+                <td><button onclick="deleteRow(this)">убирай</button></td>
+            </tr>
+            <tr id="tr1">
+                <td>222222</td>
+                <td><button onclick="deleteRow(this)">убирай</button></td>
+            </tr>
+        </table>
+        <button onclick="changeBorder()">ширина границы</button>
+        <button onclick="padspa()">cellPadding и cellSpacing таблицы</button>
+        <button onclick="aboveFrames()">верхняя</button>
+        <button onclick="belowFrames()">нижняя</button>
+        <button onclick="createCaption()">заголовок</button>
+        <button onclick="insRow()">строка</button>
+        <button onclick="leftAlign()">выравнивание строки header</button>
+        <button onclick="topAlign()">вертикальное выравнивание столбцов header</button>
+        <button onclick="changeContent()">новый материал</button>
+        <button onclick="setColSpan()">объединение</button>
+        <script>
+            function changeBorder()
+            {
+            document.getElementById('t1').border="12";
+            }
+            function padspa()
+            {
+            document.getElementById('t1').cellPadding="20";
+            document.getElementById('t1').cellSpacing="20";    
+            }
+            function aboveFrames()
+            {
+            document.getElementById('t1').frame="above";
+            }
+            function belowFrames()
+            {
+            document.getElementById('t1').frame="below";
+            }
+            function createCaption()
+            {
+            var x = document.getElementById('t1').createCaption();
+            x.innerHTML = "aaaaaaaaaa";
+            }
+            function deleteRow(r)
+            {
+            var a = r.parentNode.parentNode.rowIndex;
+            document.getElementById('t1').deleteRow(a);
+            }
+            function insRow()
+            {
+            var x = document.getElementById('t1').insertRow(0);
+            var y = x.insertCell(0);
+            var z = x.insertCell(1);
+            y.innerHTML="new";
+            z.innerHTML="new";
+            }
+            function leftAlign()
+            {
+            document.getElementById('header').align="left";
+            }
+            function topAlign()
+            {
+            document.getElementById('tr1').vAlign="top";
+            }
+            function changeContent()
+            {
+            var x = document.getElementById('t1').rows[0].cells;
+            x[0].innerHTML="опа новый материал подъехал";
+            }
+            function setColSpan()
+            {
+            var x = document.getElementById('t1').rows[0].cells;
+            x[0].colSpan = "3";
+            x[1].colSpan = "10";
+            }
+        </script>
+    </body>
+</html>

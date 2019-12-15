@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>hello</title>
+        <style>
+            tr,td{
+                text-align: center;
+                border: 3px solid black;
+                height: 50px;
+            }
+            input{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            input[type="button"]{
+                background-image: url(https://upload.wikimedia.org/wikipedia/ru/thumb/f/f0/FC_Leicester_City_Logo.svg/316px-FC_Leicester_City_Logo.svg.png);
+                background-size: 20px;
+                background-repeat: no-repeat;
+                background-position: 5px;
+                height: 30px;
+                color: white;
+                padding-left: 30px;
+                background-color: firebrick;
+                border-radius: 10px;
+            }
+            input[type="button"]:hover{
+                opacity: 0.7;
+            }
+            input[name="name"]{
+                background-image: url(https://upload.wikimedia.org/wikipedia/ru/1/14/Manchester_City_logo_2016.png);
+            }
+            input[name="id"]{
+                background-image: url(http://toplogos.ru/images/logo-borussia-dortmund.png);
+            }
+            input[name="num"]{
+                background-image: url(https://upload.wikimedia.org/wikipedia/ru/thumb/d/d4/FC_Sheffield_United_Logo.svg/402px-FC_Sheffield_United_Logo.svg.png);
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var str = "Говорю вроде бы банальные вещи, но почитайте автобиографию Терри, автобиографию Лэмпарда автобиографию Дрогба они говорят об этом прежде всего дух слива в Челси. Они договаривились вместе, они решали вместе, они сливали Сколари, Боаша и Моуриньо вместе. А эти мальчики играют на команду, на тренера, и они не понимают, в каком клубе они играют, это проблема номер один у Челси на данный момент"
+            document.write(str);
+            
+            var word = 0;
+            for(i = 0; i < str.length; i++)
+                if (str.charAt(i) == ' ')
+                    word++;
+            word++;
+            document.write("<p>Всего слов : " + word + "</p>");
+            
+            var letter = 0;
+            for(i = 0; i < str.length; i++)
+                if(str.charAt(i) >= 'а' && str.charAt(i) <= 'я' || str.charAt(i) >= 'А' && str.charAt(i) <= 'Я')
+                    letter++;
+            document.write("<p>Всего букв : " + letter + "</p>");
+            
+            document.write("<p> URL : " + document.URL + "</p>");
+            
+            var ext = "";
+            for(i = document.URL.length; i >= 0; i--)
+                if(document.URL.charAt(i) == '.')
+                    {
+                        for(var j = 1; j < document.URL.length - i; j++)
+                            ext += (document.URL.charAt(i + j));
+                        break;
+                    }
+            
+            var filename = "";
+        for (; i >= 0; i--)
+        {
+            if (document.URL.charAt(i) == '/')
+            {
+                for (var j = 1; j < document.URL.length - i; j++)
+                    if (document.URL.charAt(i+j) == '.')
+                        break;
+                else
+                    filename += (document.URL.charAt(i + j));
+                break;
+            }
+        }
+            
+            var url = {};
+        url.url = document.URL;
+        url.name = filename;
+        url.ext = ext;
+        document.write("<p> Имя файла : " + url.name + "</p>");
+        document.write("<p> Расширение файла : " + url.ext + "</p>");
+
+        </script>
+        <h3>Анкоры:</h3>
+        <a name="html">Александр Елагин</a><br>
+        <a name="css">Норридж Сити</a><br>
+        <a name="js">Банальные вещи</a><br>
+        
+        <h3>Ccылки:</h3>
+        <a href=#html>Lovushka</a><br>
+        <a href="https://www.premierleague.com/" target="_blank">АПЛ</a><br>
+        
+        <h3>Картинки:</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_Switzerland_%28Pantone%29.svg/1200px-Flag_of_Switzerland_%28Pantone%29.svg.png" id="swiss" height="300" width="300">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_Cambodia.svg" id="cam" height="300" width="530">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/1200px-Flag_of_Senegal.svg.png" id="senegal" height="300" width="500">
+        
+        <script>
+            document.write("<p>Количество анкоров : " + document.anchors.length + "</p>");
+            document.write("<p>Количество ссылок : " + document.links.length + "</p>");
+            document.write("<p>Содержимое перового анкора : " + document.anchors[0].innerHTML + "</p>");
+            document.write("<p>Количество изображений : " + document.images.length + "</p>");
+            document.write("<p>Ширина первой картинки : " + document.images[0].width + "</p>");
+            var max = 0;
+            for(i = 0; i < document.images.length; i++)
+                if (document.images[i].width > max)
+                    max = document.images[i].width;
+            document.write("<p>Ширина самой широкой картинки : " + max + "</p>");
+            var sum = 0;
+            for(i = 0; i < document.images.length; i++)
+                sum += document.images[i].height;
+            document.write("<p>Суммарная высота всех картинок : " + sum + "</p>");
+        </script>
+        
+        <h3>Формы:</h3>
+        <div id="forms"></div>
+        
+        <script>
+            
+            let table = document.createElement('table');
+            for(let i = 0; i < 10; i++)
+                {
+                    let tr = document.createElement('tr');
+                    let td = document.createElement('td');
+                    let form = document.createElement('form');
+                    form.name = i+1;
+                    form.id = i;
+                    let input = document.createElement('input');
+                    if(i%3 == 0)
+                        {
+                            input.type = "checkbox";
+                            input.value = "form";
+                        }
+                    else
+                        {   
+                            if(i%3 == 1){
+                                input.type = "text";
+                                input.placeholder = "введите текст";
+                            }
+                            else{
+                                input.type = "number";
+                                input.placeholder = "введите число";
+                            }
+                            
+                        }
+                    let input2 = document.createElement('input');
+                    if(i%3 == 0)
+                        {
+                            input2.type = "password";
+                            input2.placeholder = "введите пароль";
+                        }
+                    else
+                        {   
+                            if(i%3 == 1){
+                                input2.type = "radio";
+                            }
+                            else{
+                                input2.type = "time";
+                                input2.placeholder = "введите число";
+                            }
+                        }
+                    form.appendChild(input);
+                    form.appendChild(input2);
+                    td.appendChild(form);
+                    tr.appendChild(td);
+                    let td2 = document.createElement('td');
+                    let button = document.createElement('input');
+                    button.type = "button";
+                    button.value = "Показать имя формы";
+                    button.name = "name";
+                    button.onclick = function(){
+                        alert("имя формы : " + document.forms[i].name);
+                    }
+                    td2.appendChild(button);
+                    let buttonID = document.createElement('input');
+                    buttonID.type = "button";
+                    buttonID.value = "Принадлежность";
+                    buttonID.name = "id";
+                    buttonID.onclick = function(){
+                        alert("ID формы : " + document.forms[i].id);
+                    }
+                    td2.appendChild(buttonID);
+                    let del = document.createElement('input');
+                    del.type = "button";
+                    del.value = "Сбросить";
+                    del.name = "clear";
+                    del.onclick = function(){
+                        document.forms[i].reset();
+                    }
+                    td2.appendChild(del);
+                    let num = document.createElement('input');
+                    num.type = "button";
+                    num.value = "Показать количество полей";
+                    num.name = "num";
+                    num.onclick = function(){
+                        alert("количество полей : " + document.forms[i].length);
+                    }
+                    td2.appendChild(num);
+                    tr.appendChild(td2);
+                    table.appendChild(tr);
+                }
+            document.getElementById("forms").appendChild(table);
+        </script>
+    
+        <p>Имена четных форм :
+        <script>
+            var string = "";
+            for(i = 1; i < document.forms.length; i += 2)
+                {
+                string += document.forms[i].name;
+                string += ', ';
+                }
+            document.write(string.substring(0,string.length - 2));
+        </script>
+        </p>
+        
+        
+        <h3>Доп.задание</h3>
+    </body>
+</html>
