@@ -1,0 +1,130 @@
+<! DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            JQuery
+        </title>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+       <script>
+            $(document).ready(function(){
+                $("h1").css("fontSize","100px");
+                $(".test").css("background-color","white");
+                $(".red").css("background-color","red");
+                $("#main").css("background-color","green");
+                $(".blue").css("background-color","blue");
+                $("#a").css("background-color","yellow");
+                $("#form").css("background-color","pink");
+                $("input").prop({disabled:true});
+                
+                $("a").prepend("↗");
+                $("a").attr("target","_BLANK");
+                
+                $("#button").click(function(){
+                
+                   $("a").removeAttr("target");
+                });
+                
+                
+                
+                $("#b1").click(function(){
+                   $("#str1").fadeIn("slow"); 
+                });
+                $("#b2").click(function(){
+                   $("#str2").fadeOut("slow"); 
+                });
+                $("#b3").click(function(){
+                   $("#str3").fadeTo("slow",0.4); 
+                });
+               $("#b4").click(function(){
+                   $("#str4").slideUp("slow"); 
+                });
+                $("#b5").click(function(){
+                   $("#str5").slideToggle("slow"); 
+                });
+                
+            });
+                $("a").each(function(){
+                    this.href = this.href.replace("http:", "https:");
+                });
+        </script>
+    </head>
+    <body>
+        <div id="button">
+            <button>отменить</button>
+        </div>
+        <div id="main">
+            <h1>ЗАДАНИЕ АУАУАУАУАУ</h1>
+            <p class="test">Говорю вроде банальные вещи</p>
+            <p class="blue">ЕЛАГИН</p>
+            <p class="red">Элемент показывается как блочный. Применение этого значения для строчных элементов, например, заставляет его вести подобно блокам — происходит перенос строк в начале и в конце содержимого.</p>
+        </div>
+        <div id="form">
+            <input type="checkbox">
+            <input type="text">
+            <input type="password">
+        </div>
+        <div id="a">
+            <a href="https://www.w3schools.com/css/css_howto.asp" id="one">HTML</a><br>
+            <a href="https://webref.ru/css/display" id="two">БЛОКИ</a><br>
+            <a href="https://www.premierleague.com/" id="three">EPL</a>
+        </div>
+        <div id="table">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>
+                            текст
+                        </th>
+                        <th>
+                            эффект/анимация
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p id="str1" style="display:none;">WEB COOL</p>
+                        </td>
+                        <td>
+                            <button id="b1">Fade in</button>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <p id="str2" style="color:red">Диниченко Вима</p>
+                        </td>
+                        <td>
+                            <button id="b2">Fade out</button>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <p id="str3" style="color:white;background-color:blue">Аакян Сндрей</p>
+                        </td>
+                        <td>
+                            <button id="b3">Fade to</button>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <p id="str4" style="">Амирнов Срсентий</p>
+                        </td>
+                        <td>
+                            <button id="b4">Slide up</button>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <p id="str5" style="">Карков Мирилл</p>
+                        </td>
+                        <td>
+                            <button id="b5">Slide Toggle</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+  
